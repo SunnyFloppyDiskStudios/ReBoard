@@ -13,18 +13,56 @@ struct ContentView: View {
             VisualEffectBlur(material: .hudWindow, blendingMode: .behindWindow)
                 .edgesIgnoringSafeArea(.all)
             
+            // CONTENT
             VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
-            }
-            .padding()
-            .onAppear {
-                if let window = NSApplication.shared.windows.first {
-                    window.isOpaque = false
-                    window.backgroundColor = .clear // Clear to allow blur effect
+                // WIDGETS
+                WidgetView()
+                    .edgesIgnoringSafeArea(.horizontal)
+                    .edgesIgnoringSafeArea(.top)
+                    .padding()
+                
+                Spacer()
+                
+                // BOTTOM
+                HStack {
+                    // VERSION
+                    HStack {
+                        Text("◻️") // image
+                        VStack(alignment: .leading) {
+                            Text("ReBoard")
+                                .bold()
+                            Text("v0.0")
+                        }
+                    }
+                    .frame(maxHeight: 15)
+                    .padding()
+                    
+                    Spacer()
+                    
+                    // MENU BUTTONS
+                    HStack {
+                        Button(action: {
+                            
+                        }) {
+                            Text("File")
+                        }
+                        
+                        Button("Widgets") {
+                            
+                        }
+                        
+                        Button("Import") {
+                            
+                        }
+                    }
                 }
+                .padding()
+            }
+        }
+        .onAppear {
+            if let window = NSApplication.shared.windows.first {
+                window.isOpaque = false
+                window.backgroundColor = .clear
             }
         }
     }
